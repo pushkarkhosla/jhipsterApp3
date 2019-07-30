@@ -1,0 +1,22 @@
+version: '2'
+services:
+  jhipsterapp3-app:
+    image: jhipsterapp3
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://jhipsterapp3-postgresql:5432/jhipsterApp3
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://jhipsterapp3-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://jhipsterapp3-elasticsearch:9200
+    ports:
+      - 8080:8080
+  jhipsterapp3-postgresql:
+    extends:
+      file: postgresql.yml
+      service: jhipsterapp3-postgresql
+  jhipsterapp3-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: jhipsterapp3-elasticsearch
