@@ -46,6 +46,7 @@ public class CacheConfiguration {
             createCache(cm, com.arttha.domain.PersistentToken.class.getName());
             createCache(cm, com.arttha.domain.User.class.getName() + ".persistentTokens");
             createCache(cm, com.arttha.domain.BookEntity.class.getName());
+            createCache(cm, com.arttha.domain.PushkarJhipster.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
